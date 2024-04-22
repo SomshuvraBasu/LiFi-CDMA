@@ -196,7 +196,8 @@ public:
     // Listening to station request
     void listen(int station_number)
     {
-        cout << "Here is your request for the station number " << station_number << ": " << finalData[station_number - 1] << endl;
+        cout << "Requested station: 4" << station_number << "; "
+             << "Message: " << finalData[station_number - 1] << endl;
     }
 };
 
@@ -255,11 +256,12 @@ int main()
     cin.ignore(); // Clear newline character from buffer
 
     vector<string> data(num_stations);
-    cout << "Enter text data for each station:" << endl;
+    cout << "Enter text data for each station: " << endl;
     for (int i = 0; i < num_stations; ++i)
     {
         cout << "Station " << i + 1 << ": ";
-        cin >> data[i];
+        getline(cin, data[i]);
+        // cin>>data[i];
     }
 
     // Before encoding, make all binary strings of equal length
@@ -269,7 +271,7 @@ int main()
     CDMA channel;
     channel.setUp(equalLengthData, num_stations);
 
-    cout << "Enter the Station Number you want to listen to :)";
+    cout << "Enter the Station Number you want to listen to: ";
     int listen_to;
     cin >> listen_to;
     channel.listen(listen_to);
