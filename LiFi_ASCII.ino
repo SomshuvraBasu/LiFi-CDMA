@@ -4,7 +4,7 @@ const int threshold = 700; // Threshold for zero detection
 
 void setup()
 {
-    Serial.begin(9600);      // Initialize serial communication
+    Serial.begin(115200);      // Initialize serial communication
     pinMode(ledPin, OUTPUT); // Set LED pin as an output
 }
 
@@ -44,12 +44,12 @@ void loop()
         if (binaryString.charAt(i) == '1')
         {
             digitalWrite(ledPin, HIGH); // Turn on the LED
-            delay(100);                 // Transmit each bit for 100 milliseconds
+            delay(25);                 // Transmit each bit for 25 milliseconds
         }
         else
         {
             digitalWrite(ledPin, LOW); // Turn off the LED
-            delay(100);                // Transmit each bit for 100 milliseconds
+            delay(25);                // Transmit each bit for 25 milliseconds
         }
 
         // Receive
@@ -62,7 +62,7 @@ void loop()
         {
             receivedString += '1'; // Above threshold, consider it as '1'
         }
-        delay(100); // Delay for synchronization
+        // delay(100); // Delay for synchronization
     }
 
     // End of transmission, print received string
